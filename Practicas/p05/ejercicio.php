@@ -65,7 +65,19 @@
         echo "\$b = " . $GLOBALS['b'] . "<br>";
         echo "\$c = " . $GLOBALS['c'] . "<br>";
     ?>
-<h2>Ejercicio 5</h2>
+    <h2>Ejercicio 5</h2>
+
+    <?php
+        $a = "7 personas";
+        $b = (integer) $a;
+        $a = "9E3";
+        $c = (double) $a;
+
+        echo "Valores después de las conversiones:<br>";
+        echo "\$a = $a<br>";
+        echo "\$b = $b<br>";
+        echo "\$c = $c<br>";
+    ?>
     
 </body>
 </html>
