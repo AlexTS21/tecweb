@@ -78,6 +78,25 @@
         echo "\$b = $b<br>";
         echo "\$c = $c<br>";
     ?>
+
+    <h2>Ejercicio 6</h2>
+
+    <?php
+        $a = "0";
+        $b = "TRUE";
+        $c = FALSE;
+        $d = ($a OR $b);
+        $e = ($a AND $c);
+        $f = ($a XOR $b);
+
+        echo "Valores booleanos usando var_dump:<br>";
+        var_dump($a, $b, $c, $d, $e, $f);
+
+        // Convertir booleanos a valores que se puedan mostrar con echo
+        echo "<br>Valores de \$c y \$e mostrables:<br>";
+        echo "c = " . (int)$c . "<br>";
+        echo "e = " . (int)$e . "<br>";
+    ?>
     
 </body>
 </html>
