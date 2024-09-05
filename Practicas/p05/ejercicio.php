@@ -52,7 +52,6 @@
         print_r($z);
 
     ?>
-
     <h2>Ejercicio 4</h2>
 
     <?php
@@ -66,6 +65,7 @@
         echo "\$b = " . $GLOBALS['b'] . "<br>";
         echo "\$c = " . $GLOBALS['c'] . "<br>";
     ?>
-    <h2>Ejercicio 5</h2>
+<h2>Ejercicio 5</h2>
+    
 </body>
 </html>
