@@ -28,7 +28,9 @@
 
         // Imprimir los valores de las variables actualizados
         echo '$a: ' . $a . ' $b: ' . $b . ' $c: ' . $c . "<br>";
-        echo 'Al acer que las vairables $b y $c referencien a $a el contenido de a se copio en las demas variabels'."<br>";
+        echo 'Al hacer que las vairables $b y $c referencien a $a el contenido de a se copio en las demas variabels'."<br>";
+
+        unset($a, $b, $c);
     ?>
 
     <h2>Ejercicio 3</h2>
@@ -51,6 +53,7 @@
         echo "<br>\$z = ";
         print_r($z);
 
+        unset($a, $b, $c, $z);
     ?>
     <h2>Ejercicio 4</h2>
 
@@ -64,6 +67,8 @@
         echo "\$a = " . $GLOBALS['a'] . "<br>";
         echo "\$b = " . $GLOBALS['b'] . "<br>";
         echo "\$c = " . $GLOBALS['c'] . "<br>";
+
+        unset($a, $b, $c, $z);
     ?>
     <h2>Ejercicio 5</h2>
 
@@ -77,6 +82,8 @@
         echo "\$a = $a<br>";
         echo "\$b = $b<br>";
         echo "\$c = $c<br>";
+
+        unset($a, $b, $c);
     ?>
 
     <h2>Ejercicio 6</h2>
@@ -96,6 +103,8 @@
         echo "<br>Valores de \$c y \$e mostrables:<br>";
         echo "c = " . (int)$c . "<br>";
         echo "e = " . (int)$e . "<br>";
+
+        unset($a, $b, $c, $d, $e, $f);  
     ?>
     
     <h2>Ejericio 7</h2>
