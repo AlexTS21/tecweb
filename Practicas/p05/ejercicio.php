@@ -98,5 +98,11 @@
         echo "e = " . (int)$e . "<br>";
     ?>
     
+    <h2>Ejericio 7</h2>
+    <?php
+        echo "Versión de Apache y PHP: " . $_SERVER['SERVER_SOFTWARE'] . "<br>";
+        echo "Sistema operativo del servidor: " . PHP_OS . "<br>";
+        echo "Idioma del navegador: " . $_SERVER['HTTP_ACCEPT_LANGUAGE'] . "<br>";
+    ?>
 </body>
 </html>
