@@ -4,9 +4,103 @@
     <meta charset="utf-8" >
     <title>Registro al Concurso</title>
     <style type="text/css">
-        ol, ul { 
-      list-style-type: none;
-        }
+      /* Estilo general */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        color: #34495e;
+        margin-top: 30px;
+      }
+
+      p {
+        font-size: 1.1em;
+        line-height: 1.6;
+      }
+
+      /* Estilo de la lista y formulario */
+      ul {
+        padding: 0;
+        margin: 0;
+      }
+
+      li {
+        margin-bottom: 15px;
+      }
+
+      input[type="text"], textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 1em;
+        border: 1px solid #bdc3c7;
+        border-radius: 5px;
+        box-sizing: border-box;
+        margin-top: 5px;
+      }
+
+      textarea {
+        resize: none;
+      }
+
+      /* Estilo de los botones */
+      input[type="submit"], input[type="reset"] {
+        background-color: #27ae60;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+      }
+
+      input[type="submit"]:hover, input[type="reset"]:hover {
+        background-color: #2ecc71;
+      }
+
+      input[type="reset"] {
+        background-color: #e74c3c;
+        margin-left: 10px;
+      }
+
+      input[type="reset"]:hover {
+        background-color: #c0392b;
+      }
+
+      /* Estilo para los campos de selección */
+      ul li {
+        font-size: 1.1em;
+      }
+
+      /* Espaciado y alineación */
+      form {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 600px;
+        margin: 0 auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      form p {
+        margin-bottom: 10px;
+      }
+
+      ul, ol {
+        margin: 10px 0;
+        padding-left: 20px;
+      }
     </style>
   </head>
 
@@ -20,11 +114,12 @@
       <p>Información del Participante</p>
 
       <ul>
-      <li>Nombre: <input type="text" name="name"></li>
-      <li>Dirección de E-mail: <input type="text" name="email"></li>
-      <li>Número Telefónico: <input type="text" name="phone"></li>
-      <li>Mis tenis son tan feos porque...<br><textarea name="story" rows="4" cols="60" maxlength="300"
-        placeholder="No mas de 300 caracteres"></textarea></li></li>
+        <li>Nombre: <input type="text" name="name" placeholder="Ingresa tu nombre"></li>
+        <li>Dirección de E-mail: <input type="text" name="email" placeholder="Ingresa tu email"></li>
+        <li>Número Telefónico: <input type="text" name="phone" placeholder="Ingresa tu número telefónico"></li>
+        <li>Mis tenis son tan feos porque...<br>
+          <textarea name="story" rows="4" cols="60" maxlength="300" placeholder="No más de 300 caracteres"></textarea>
+        </li>
       </ul>
 
       <h2>Diseña tus Mike personalizados:</h2>
@@ -32,26 +127,29 @@
       <p>Diseño personalizado del Tenis</p>
 
       <p>Color <em>(escoge uno)</em>:</p>
-        <ul>
+      <ul>
         <li>Rojo</li>
         <li>Azul</li>
         <li>Negro</li>
         <li>Plateado</li>
-        </ul>
+      </ul>
 
       <p>Características <em>(escoge tantas como quieras)</em>:</p>
-        <ul>
+      <ul>
         <li>Cordones brillantes</li>
         <li>Logo metálico</li>
         <li>Suela luminosa</li>
         <li>WiFi integrado</li>
-        </ul>
+      </ul>
 
       <p>Talla</p>
       <p>Las medidas reflejan el estándar masculino:</p>
 
-      <p><input type="submit" value="!Chidos mis tenis¡">
-      <input type="reset"></p>
+      <p>
+        <input type="submit" value="¡Chidos mis tenis!">
+        <input type="reset" value="Restablecer">
+      </p>
     </form>
+
   </body>
 </html>
