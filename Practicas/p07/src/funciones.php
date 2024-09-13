@@ -36,4 +36,14 @@ function primerMultiploDoWhile($divisor) {
     return $numero;
 }
 
+//4. Funcion para generar la tabla de assci
+function generarArregloLetras() {
+    $arreglo = [];
+    for ($i = 97; $i <= 122; $i++) {
+        $arreglo[$i] = chr($i);
+    }
+    return $arreglo;
+}
+
+
 ?>

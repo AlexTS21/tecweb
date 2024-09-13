@@ -62,5 +62,20 @@
     }
     ?>
 
+    
+    <!-- 4.Arreglo de letras-->
+    <h1>Arreglo de Letras</h1>
+    <?php
+    
+        $arreglo = generarArregloLetras();
+        
+        echo "<table border='1'>";
+        foreach ($arreglo as $key => $value) {
+            echo "<tr><td>$key</td><td>$value</td></tr>";
+        }
+        echo "</table>";
+    ?>
+
+
 </body>
 </html>
