@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta del Parque Vehicular</title>
+</head>
+<body>
+    <h1>Consulta del Parque Vehicular</h1>
+    <form action="consultar_vehiculo.php" method="POST">
+        <label for="matricula">Matrícula del Auto:</label>
+        <input type="text" id="matricula" name="matricula" required>
+        <br>
+        <input type="submit" value="Consultar">
+    </form>
+    <form action="consultar_vehiculo.php" method="POST">
+        <input type="hidden" name="todos" value="true">
+        <input type="submit" value="Mostrar Todos los Autos">
+    </form>
+</body>
+</html>
