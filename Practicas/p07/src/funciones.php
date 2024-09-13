@@ -4,7 +4,6 @@
         return ($numero % 5 == 0 && $numero % 7 == 0);
     }
 
-?>
 
 // 2. Función para generar secuencias de números aleatorios
 function generarNumerosAleatorios() {
@@ -19,3 +18,22 @@ function generarNumerosAleatorios() {
         
     return [$matriz, $iteraciones];
 }
+
+//3. Funciones para gnerar el primer multiplo aletorio
+
+function primerMultiploWhile($divisor) {
+    do {
+        $numero = rand(1, 1000);
+    } while ($numero % $divisor !== 0);
+    return $numero;
+}
+
+function primerMultiploDoWhile($divisor) {
+    $numero = rand(1, 1000);
+    while ($numero % $divisor !== 0) {
+        $numero = rand(1, 1000);
+    }
+    return $numero;
+}
+
+?>

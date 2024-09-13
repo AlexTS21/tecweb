@@ -43,6 +43,24 @@
         echo "<p>$cantidadNumeros números obtenidos en $iteraciones iteraciones.</p>";
     ?>
 
-    
+     <!-- 3.Divisor aletorio-->
+     <h1>Primer divisor aletorio</h1>
+    <?php
+    if (isset($_GET['divisor'])) {
+        $divisor = intval($_GET['divisor']);
+        
+        // Usando while
+        $numeroWhile = primerMultiploWhile($divisor);
+        echo "<p>Usando while: $numeroWhile es múltiplo de $divisor.</p>";
+        
+        // Usando do-while
+        $numeroDoWhile = primerMultiploDoWhile($divisor);
+        echo "<p>Usando do-while: $numeroDoWhile es múltiplo de $divisor.</p>";
+        
+    } else {
+        echo "Por favor, proporciona un divisor en la URL.";
+    }
+    ?>
+
 </body>
 </html>
