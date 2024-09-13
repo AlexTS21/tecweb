@@ -22,5 +22,27 @@
         }
     }
     ?>
+
+     <!-- 2.Generar numeros aletorios -->
+     <h1>Generación de Números Aleatorios</h1>
+    <?php
+        list($matriz, $iteraciones) = generarNumerosAleatorios();
+        $cantidadNumeros = 0;
+        
+        echo "<table border='1'>";
+        foreach ($matriz as $fila) {
+            echo "<tr>";
+            foreach ($fila as $numero) {
+                echo "<td>$numero</td>";
+                $cantidadNumeros++;
+            }
+            echo "</tr>";
+        }
+        echo "</table>";
+        
+        echo "<p>$cantidadNumeros números obtenidos en $iteraciones iteraciones.</p>";
+    ?>
+
+    
 </body>
 </html>

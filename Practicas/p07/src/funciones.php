@@ -5,3 +5,17 @@
     }
 
 ?>
+
+// 2. Función para generar secuencias de números aleatorios
+function generarNumerosAleatorios() {
+    $matriz = [];
+    $iteraciones = 0;
+    
+    do {
+        $iteraciones++;
+        $numeros = [rand(0, 1000), rand(0, 1000), rand(0, 1000)];
+        $matriz[] = $numeros;
+    } while (!($numeros[0] % 2 != 0 && $numeros[1] % 2 == 0 && $numeros[2] % 2 != 0));
+        
+    return [$matriz, $iteraciones];
+}
