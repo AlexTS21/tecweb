@@ -50,11 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 HTML;
     } else {
         // Insertar el nuevo producto en la base de datos, con 'eliminado' en 0
-        //$query = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen, eliminado) 
-        //          VALUES (:nombre, :marca, :modelo, :precio, :detalles, :unidades, :imagen, 0)";
-        $query = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen) 
-                    VALUES (:nombre, :marca, :modelo, :precio, :detalles, :unidades, :imagen)";
-        $stmt = $pdo->prepare($query);
+        $query = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen, eliminado) 
+                 VALUES (:nombre, :marca, :modelo, :precio, :detalles, :unidades, :imagen, 0)";
+       
         
         try {
             $stmt->bindParam(':nombre', $nombre);
