@@ -69,11 +69,12 @@
 
     <div class="container">
         <h2>Registrar album</h2>
-        <form id="formulario" action="http://localhost/tecweb/Practicas/p09/set_producto_v2.php" method="POST" enctype="multipart/form-data">
-            
+        <form id="formulario" action="http://localhost/tecweb/Practicas/p10/update.php" method="POST" enctype="multipart/form-data">
+    
+            <input type="hidden" id="id" name="id" value="<?= !empty($_POST['id'])?$_POST['id']:$_GET['id'] ?>">
             <div class="form-group">
                 <label for="nombre">Nombre del Producto:</label>
-                <input type="text" id="nombre" name="nombre" required>
+                <input type="text" id="nombre" name="nombre"  value="<?= !empty($_POST['nombre'])?$_POST['nombre']:$_GET['nombre'] ?>" required>
             </div>
 
             <div class="form-group">
@@ -89,22 +90,22 @@
 
             <div class="form-group">
                 <label for="modelo">Modelo:</label>
-                <input type="text" id="modelo" name="modelo" required>
+                <input type="text" id="modelo" name="modelo"  value="<?= !empty($_POST['modelo'])?$_POST['modelo']:$_GET['modelo'] ?>" required>
             </div>
 
             <div class="form-group">
                 <label for="precio">Precio:</label>
-                <input type="number" id="precio" name="precio" step="0.01" required>
+                <input type="number" id="precio" name="precio" step="0.01" value="<?= !empty($_POST['precio'])?$_POST['precio']:$_GET['precio'] ?>" required>
             </div>
 
             <div class="form-group">
                 <label for="detalles">Detalles:</label>
-                <textarea id="detalles" name="detalles" rows="4"></textarea>
+                <textarea id="detalles" name="detalles" rows="4" >"<?= !empty($_POST['detalles'])?$_POST['detalles']:$_GET['detalles'] ?>" </textarea>
             </div>
 
             <div class="form-group">
                 <label for="unidades">Unidades disponibles:</label>
-                <input type="number" id="unidades" name="unidades" required>
+                <input type="number" id="unidades" name="unidades" value="<?= !empty($_POST['unidades'])?$_POST['unidades']:$_GET['unidades'] ?>" required>
             </div>
 
             <div class="form-group">

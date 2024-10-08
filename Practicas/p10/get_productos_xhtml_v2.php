@@ -54,7 +54,7 @@
             send2form(name, marca, modelo, precio, detalles, unidades,imagen);
         }
         function send2form(name, marca, modelo, precio, detalles, unidades,imagen) {     //form) { 
-            var urlForm = "http://localhost/tecweb/Practicas/p10/formulario_productos_v2.php";
+            var urlForm = "http://localhost/tecweb/Practicas/p10/formulario_productos_v3.php";
             var propName = "nombre="+name;
             var propAge = "marca="+marca;
             var porpMod = "modelo="+modelo;
