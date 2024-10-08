@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Registro de Audifonos</title>
+    <title>Formulario de Registro de Audífonos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -38,7 +38,6 @@
         .form-group textarea {
             resize: vertical;
         }
-        
         .form-group input[type="number"]::-webkit-outer-spin-button,
         .form-group input[type="number"]::-webkit-inner-spin-button {
             -webkit-appearance: none;
@@ -63,8 +62,8 @@
 <body>
 
     <div class="container">
-        <h2>Registrar Audifono</h2>
-        <form action="http://localhost/tecweb/Practicas/p09/set_producto_v2.php" method="POST" enctype="multipart/form-data">
+        <h2>Registrar Audífono</h2>
+        <form id="formulario" action="http://localhost/tecweb/Practicas/p09/set_producto_v2.php" method="POST" enctype="multipart/form-data">
             
             <div class="form-group">
                 <label for="nombre">Nombre del Producto:</label>
@@ -73,7 +72,14 @@
 
             <div class="form-group">
                 <label for="marca">Marca:</label>
-                <input type="text" id="marca" name="marca" required>
+                <select id="marca" name="marca" required>
+                    <option value="">Selecciona una marca</option>
+                    <option value="Sony">Meze</option>
+                    <option value="Bose">FiiO</option>
+                    <option value="Sennheiser">Moondrop</option>
+                    <option value="Apple">Audaze</option>
+                    <option value="JBL">BeyerDynamic</option>
+                </select>
             </div>
 
             <div class="form-group">
@@ -88,7 +94,7 @@
 
             <div class="form-group">
                 <label for="detalles">Detalles:</label>
-                <textarea id="detalles" name="detalles" rows="4" required></textarea>
+                <textarea id="detalles" name="detalles" rows="4"></textarea>
             </div>
 
             <div class="form-group">
@@ -98,7 +104,7 @@
 
             <div class="form-group">
                 <label for="imagen">Ruta de la Imagen:</label>
-                <input type="text" id="imagen" name="imagen" placeholder="ej: /img/producto.jpg" required>
+                <input type="text" id="imagen" name="imagen" placeholder="ej: /img/producto.jpg">
             </div>
 
             <div class="form-group">
@@ -158,5 +164,6 @@
             }
         });
     </script>
+
 </body>
 </html>
