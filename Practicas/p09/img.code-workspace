@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "img",
+			"path": "../../../p09/img"
+		},
+		{
+			"name": "p09",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
