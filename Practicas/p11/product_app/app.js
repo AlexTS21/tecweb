@@ -122,6 +122,52 @@ function init() {
 }
 
 
-function buscarProducto(){
-    console.log("hoal")
+function buscarProducto(e) {
+    e.preventDefault();
+
+    // SE OBTIENE EL TEXTO A BUSCAR
+    var search = document.getElementById('search').value;
+
+    // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
+    var client = getXMLHttpRequest();
+    client.open('POST', './backend/read.php', true);
+    client.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    client.onreadystatechange = function () {
+        // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
+        if (client.readyState == 4 && client.status == 200) {
+            console.log('[CLIENTE]\n'+client.responseText);
+            
+            // SE OBTIENE EL OBJETO DE DATOS A PARTIR DE UN STRING JSON
+            let productos = JSON.parse(client.responseText);    
+
+            // SE VERIFICA SI EL OBJETO JSON TIENE DATOS
+            if(productos.length > 0) {
+                // SE CREA UNA PLANTILLA PARA CREAR LA(S) FILA(S) A INSERTAR EN EL DOCUMENTO HTML
+                let template = '';
+                productos.forEach(producto => {
+                    let descripcion = `
+                        <li>precio: ${producto.precio}</li>
+                        <li>unidades: ${producto.unidades}</li>
+                        <li>modelo: ${producto.modelo}</li>
+                        <li>marca: ${producto.marca}</li>
+                        <li>detalles: ${producto.detalles}</li>
+                    `;
+
+                    template += `
+                        <tr>
+                            <td>${producto.id}</td>
+                            <td>${producto.nombre}</td>
+                            <td><ul>${descripcion}</ul></td>
+                        </tr>
+                    `;
+                });
+
+                // SE INSERTA LA PLANTILLA EN EL ELEMENTO CON ID "productos"
+                document.getElementById("productos").innerHTML = template;
+            } else {
+                document.getElementById("productos").innerHTML = '<tr><td colspan="3">No se encontraron productos.</td></tr>';
+            }
+        }
+    };
+    client.send("search=" + search);
 }
