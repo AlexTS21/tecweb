@@ -121,13 +121,13 @@ function init() {
     document.getElementById("description").value = JsonString;
 }
 
-
+//Para buscar un producto
 function buscarProducto(e) {
     e.preventDefault();
 
     // SE OBTIENE EL TEXTO A BUSCAR
     var search = document.getElementById('search').value;
-
+    
     // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
     var client = getXMLHttpRequest();
     client.open('POST', './backend/read.php', true);
@@ -171,3 +171,4 @@ function buscarProducto(e) {
     };
     client.send("search=" + search);
 }
+

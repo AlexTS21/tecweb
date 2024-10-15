@@ -7,9 +7,9 @@
     // SE VERIFICA HABER RECIBIDO EL PARÁMETRO DE BÚSQUEDA
     if( isset($_POST['search']) ) {
         $search = $_POST['search'];
-        
+    
         // SE REALIZA LA QUERY UTILIZANDO LIKE PARA NOMBRE, MARCA O DETALLES
-        $query = "SELECT * FROM productos WHERE nombre LIKE '%{$search}%' OR marca LIKE '%{$search}%' OR detalles LIKE '%{$search}%'";
+        $query = "SELECT * FROM productos WHERE id LIKE '%{$search}%' OR nombre LIKE '%{$search}%' OR marca LIKE '%{$search}%' OR detalles LIKE '%{$search}%'";
         
         if ( $result = $conexion->query($query) ) {
             // SE OBTIENEN TODOS LOS RESULTADOS Y SE AGREGAN AL ARREGLO
