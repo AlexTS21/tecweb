@@ -65,71 +65,83 @@ function agregarProducto(e) {
     e.preventDefault();
 
     // Obtener los valores del formulario
-    let nombre = document.getElementById('name').value.trim();
-    let description = document.getElementById('description').value.trim();
-    
-    // Parsear el JSON de la descripción
-    let productData;
+    const name = document.getElementById('name').value.trim();
+    const description = document.getElementById('description').value.trim();
+
+    // Parsear el JSON de la descripción a un objeto para validarlo
+    let product;
     try {
-        productData = JSON.parse(description);
+        product = JSON.parse(description);
     } catch (error) {
-        alert("Error en el formato del JSON. Por favor verifica.");
+        alert('JSON no válido');
         return;
     }
 
-    // Validaciones del JSON
-    if (!nombre || nombre.length > 100) {
-        alert("El nombre del producto es requerido y debe tener 100 caracteres o menos.");
+    // Validaciones
+    if (!name || name.length > 100) {
+        alert('El nombre es requerido y debe tener 100 caracteres o menos.');
         return;
     }
 
-    if (!productData.marca || productData.marca === "") {
-        alert("La marca es requerida y debe seleccionarse de la lista.");
+    if (!product.marca) {
+        alert('La marca es requerida.');
         return;
     }
 
-    if (!productData.modelo || !/^[a-zA-Z0-9]+$/.test(productData.modelo) || productData.modelo.length > 25) {
-        alert("El modelo es requerido, debe ser alfanumérico y tener 25 caracteres o menos.");
+    if (!product.modelo || !/^[a-zA-Z0-9]+$/.test(product.modelo) || product.modelo.length > 25) {
+        alert('El modelo es requerido, debe ser alfanumérico y tener 25 caracteres o menos.');
         return;
     }
 
-    if (!productData.precio || productData.precio <= 99.99) {
-        alert("El precio es requerido y debe ser mayor a 99.99.");
+    if (!product.precio || product.precio <= 99.99) {
+        alert('El precio es requerido y debe ser mayor a 99.99.');
         return;
     }
 
-    if (productData.detalles && productData.detalles.length > 250) {
-        alert("Los detalles deben tener 250 caracteres o menos.");
+    if (product.detalles && product.detalles.length > 250) {
+        alert('Los detalles deben tener 250 caracteres o menos.');
         return;
     }
 
-    if (!productData.unidades || productData.unidades < 0) {
-        alert("Las unidades son requeridas y deben ser mayores o iguales a 0.");
+    if (product.unidades === undefined || product.unidades < 0) {
+        alert('Las unidades son requeridas y deben ser mayor o igual a 0.');
         return;
     }
 
-    if (!productData.imagen) {
-        productData.imagen = './imagenes/default.png'; // Ruta de imagen por defecto
+    // Si la ruta de la imagen no está definida, usa una por defecto
+    if (!product.imagen) {
+        product.imagen = 'ruta/a/imagen/por/defecto.jpg';
     }
 
-    // Si todo es válido, enviar los datos al servidor
-    var client = getXMLHttpRequest();
-    client.open('POST', './backend/add_product.php', true);
-    client.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    
-    // Preparar los datos a enviar
-    let data = `nombre=${encodeURIComponent(nombre)}&marca=${encodeURIComponent(productData.marca)}&modelo=${encodeURIComponent(productData.modelo)}&precio=${encodeURIComponent(productData.precio)}&detalles=${encodeURIComponent(productData.detalles || '')}&unidades=${encodeURIComponent(productData.unidades)}&imagen=${encodeURIComponent(productData.imagen)}`;
-    
-    client.onreadystatechange = function () {
-        if (client.readyState == 4 && client.status == 200) {
-            console.log('Producto agregado:', client.responseText);
-            alert("Producto agregado exitosamente.");
-            // Aquí podrías refrescar la lista de productos o limpiar el formulario
-        }
+    // Crear objeto final para enviar al servidor
+    const productData = {
+        nombre: name,
+        ...product // Mezcla los datos validados del JSON
     };
 
-    client.send(data);
+    // Crear conexión asincrónica para enviar los datos al servidor
+    fetch('./backend/create.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(productData)
+    })
+    .then(response => response.json())  // Convertir la respuesta a JSON
+    .then(data => {
+        if (data.status === 'error') {
+            alert(data.message);  // Mostrar mensaje de error si el producto ya existe
+        } else if (data.status === 'success') {
+            alert('Producto agregado con éxito');
+        }
+    })
+    .catch(error => {
+        console.error('[Error en el servidor]:', error);
+        alert('Error al comunicarse con el servidor');
+    });
 }
+
+
 // SE CREA EL OBJETO DE CONEXIÓN COMPATIBLE CON EL NAVEGADOR
 function getXMLHttpRequest() {
     var objetoAjax;
