@@ -120,3 +120,8 @@ function init() {
     var JsonString = JSON.stringify(baseJSON,null,2);
     document.getElementById("description").value = JsonString;
 }
+
+
+function buscarProducto(){
+    console.log("hoal")
+}
