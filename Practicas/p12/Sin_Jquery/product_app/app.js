@@ -21,7 +21,7 @@ function init() {
 }
 
 // FUNCIÓN CALLBACK AL CARGAR LA PÁGINA O AL AGREGAR UN PRODUCTO
-function listarProductos() {
+/*function listarProductos() {
     // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
     var client = getXMLHttpRequest();
     client.open('GET', './backend/product-list.php', true);
@@ -71,7 +71,7 @@ function listarProductos() {
     };
     client.send();
 }
-
+*/
 // FUNCIÓN CALLBACK DE BOTÓN "Buscar"
 function buscarProducto(e) {
     /**
