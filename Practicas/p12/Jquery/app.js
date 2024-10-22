@@ -18,6 +18,7 @@ function init() {
 }
 
 $(document).ready(function(){
+    let edit = false;
     fetchProducts();
     console.log("Jquery is working");
 
@@ -51,7 +52,9 @@ $(document).ready(function(){
                         template += `
                             <tr productId="${producto.id}">
                                 <td>${producto.id}</td>
-                                <td>${producto.nombre}</td>
+                                <td>
+                                    <a herf="#" class="product-item">${producto.nombre}<a/>
+                                </td>
                                 <td><ul>${descripcion}</ul></td>
                                 <td>
                                     <button class="product-delete btn btn-danger" >
@@ -81,6 +84,7 @@ $(document).ready(function(){
         let descripcion =  $('#description').val();
         let obj =  JSON.parse(descripcion);
         obj.nombre =  $('#name').val();
+        obj.id = $('#product-id').val();
         const producto = JSON.stringify(obj)
 
         //Validamos los datos antes de ser enviados
@@ -128,8 +132,11 @@ $(document).ready(function(){
             obj.imagen = 'ruta/a/imagen/por/defecto.jpg';
         }
 
+
+        let url = edit === false ? 'backend/product-add.php' : 'backend/product-edit.php';
+        console.log(url)
         //Mandamos los datos al servidor  y escribimos su respuesta
-        $.post('backend/product-add.php', producto, function(response){
+        $.post(url, producto, function(response){
             console.log(response)
             let res = JSON.parse(response);
             let template_bar = ``;
@@ -141,6 +148,7 @@ $(document).ready(function(){
             document.getElementById("product-result").className = "card my-4 d-block";
             // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
             document.getElementById("container").innerHTML = template_bar;  
+            btn.textContent = "Agregar Producto"
             fetchProducts();
         })
         e.preventDefault();
@@ -152,7 +160,7 @@ $(document).ready(function(){
             let element = $(this)[0].parentElement.parentElement;
             let id = $(element).attr('productId');
             console.log(id)
-            $.get('backend/product-delete.php', {id},function(response){
+            $.getgo('backend/product-delete.php', {id},function(response){
                 let res = JSON.parse(response);
                 let template_bar = ``;
                 template_bar += `
@@ -166,6 +174,28 @@ $(document).ready(function(){
                 fetchProducts();
             });
         }
+    })
+
+    $(document).on('click', '.product-item', function(){
+        let element = $(this)[0].parentElement.parentElement;
+        let id = $(element).attr('productId');
+        $.post('backend/product-single.php', {id}, function(response){
+            const producto = JSON.parse(response);
+            $('#name').val(producto.nombre);
+            var descripcion = {};
+            descripcion.precio = producto.precio;
+            descripcion.unidades= producto.unidades;
+            descripcion.modelo=producto.modelo;
+            descripcion.marca=producto.marca;
+            descripcion.detalles=producto.detalles;
+            descripcion.imagen=producto.imagen;
+            const datos = JSON.stringify(descripcion); 
+            $('#description').val(datos);
+            $('#product-id').val(id)
+            let btn = document.getElementById("sbm");
+            btn.textContent = "Editar producto"
+            edit = true;    
+        })
     })
 
     function fetchProducts(){
@@ -197,7 +227,9 @@ $(document).ready(function(){
                         template += `
                             <tr productId="${producto.id}">
                                 <td>${producto.id}</td>
-                                <td>${producto.nombre}</td>
+                                <td>
+                                    <a herf="#" class="product-item">${producto.nombre}<a/>
+                                </td>
                                 <td><ul>${descripcion}</ul></td>
                                 <td>
                                     <button class="product-delete btn btn-danger" >
