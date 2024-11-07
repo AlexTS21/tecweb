@@ -138,7 +138,7 @@ $(document).ready(function(){
 
 
         const url = edit === false ? './backend/product-add.php' : './backend/product-edit.php';
-        
+        console.log(postData)
         $.post(url, postData, (response) => {
             console.log(response);
             // SE OBTIENE EL OBJETO DE DATOS A PARTIR DE UN STRING JSON
@@ -173,7 +173,17 @@ $(document).ready(function(){
             const element = $(this)[0].activeElement.parentElement.parentElement;
             const id = $(element).attr('productId');
             $.post('./backend/product-delete.php', {id}, (response) => {
-                $('#product-result').hide();
+                let respuesta = JSON.parse(response);
+                // SE CREA UNA PLANTILLA PARA CREAR INFORMACIÓN DE LA BARRA DE ESTADO
+                let template_bar = '';
+                template_bar += `
+                        <li style="list-style: none;">status: ${respuesta.status}</li>
+                        <li style="list-style: none;">message: ${respuesta.message}</li>
+                    `;
+                // SE HACE VISIBLE LA BARRA DE ESTADO
+                $('#product-result').show();
+                // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
+                $('#container').html(template_bar);
                 listarProductos();
             });
         }
