@@ -41,6 +41,27 @@ class Products extends DataBase {
         $this->response = $data;
     }
 
+    public function singleByName($name) {
+        $data = array();
+        $sql = "SELECT * FROM productos WHERE name = {$nombre}";
+        $result = $this->query($sql);
+
+        if (is_object($result) && $result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            if (!is_null($row)) {
+                foreach ($row as $key => $value) {
+                    $data[$key] = utf8_encode($value);
+                }
+            }
+            $result->free();
+        } else {
+            die('Error en la consulta: ' . mysqli_error($this->conexion));
+        }
+
+        // Almacena los datos obtenidos en la propiedad response
+        $this->response = $data;
+    }
+
     public function add($product) {
         $data = array(
             'status'  => 'error',
@@ -198,7 +219,6 @@ class Products extends DataBase {
         // Convierte el array de response a un string JSON y lo retorna
         return json_encode($this->response, JSON_PRETTY_PRINT);
     }
-
 
 }
 ?>
