@@ -1,4 +1,5 @@
 <?php
+namespace Backend;
 require_once 'DataBase.php';
 
 class Products extends DataBase {
@@ -7,6 +8,16 @@ class Products extends DataBase {
     public function __construct($dbName = 'marketzone', $user = 'root', $password = 'IMREDj2128@') {
         $this->response = null;
         parent::__construct($user, $password, $dbName);
+    }
+
+    protected function query($sql) {
+        $result = mysqli_query($this->conexion, $sql);
+        if ($result) {
+            $this->response = $result;
+        } else {
+            $this->response = 'Error en la consulta: ' . mysqli_error($this->conexion);
+        }
+        return $this->response;
     }
 
     public function single($id) {

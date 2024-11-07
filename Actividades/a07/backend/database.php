@@ -1,4 +1,5 @@
 <?php
+namespace Backend;
 abstract class DataBase {
     // Objeto de conexión protegido, accesible por las subclases
     protected $conexion;
@@ -13,5 +14,14 @@ abstract class DataBase {
         }
     }
 
+    // Método abstracto para que las subclases implementen sus propias consultas
+    abstract protected function query($sql);
+
+    // Destructor para cerrar la conexión
+    public function __destruct() {
+        if ($this->conexion) {
+            mysqli_close($this->conexion);
+        }
+    }
 }
 ?>
