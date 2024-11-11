@@ -1,5 +1,5 @@
 <?php
-namespace Backend;
+namespace myAPI\DataBase;
 abstract class DataBase {
     // Objeto de conexión protegido, accesible por las subclases
     protected $conexion;

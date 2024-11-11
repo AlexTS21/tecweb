@@ -1,8 +1,8 @@
 <?php
-namespace Backend;
-require_once 'DataBase.php';
+namespace myAPI\Read;
+use myAPI\DataBase\DataBase; 
 
-class Create extends DataBase {
+class Read extends DataBase {
     public function __construct($dbName = 'marketzone', $user = 'root', $password = 'IMREDj2128@') {
         $this->response = null;
         parent::__construct($user, $password, $dbName);

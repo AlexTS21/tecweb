@@ -1,6 +1,6 @@
 <?php
-namespace Backend;
-require_once 'DataBase.php';
+namespace myAPI\Create;
+use myAPI\DataBase\DataBase; 
 
 class Create extends DataBase {
     public function __construct($dbName = 'marketzone', $user = 'root', $password = 'IMREDj2128@') {
