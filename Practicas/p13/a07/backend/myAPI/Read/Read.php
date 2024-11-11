@@ -2,9 +2,7 @@
 namespace Backend;
 require_once 'DataBase.php';
 
-class Products extends DataBase {
-    protected $response;
-
+class Create extends DataBase {
     public function __construct($dbName = 'marketzone', $user = 'root', $password = 'IMREDj2128@') {
         $this->response = null;
         parent::__construct($user, $password, $dbName);
@@ -59,99 +57,6 @@ class Products extends DataBase {
         }
 
         // Almacena los datos obtenidos en la propiedad response
-        $this->response = $data;
-    }
-
-    public function add($product) {
-        $data = array(
-            'status'  => 'error',
-            'message' => 'Ya existe un producto con ese nombre'
-        );
-
-        $productData = json_decode(json_encode($product), false);
-
-        if (isset($productData->nombre)) {
-            $sql = "SELECT * FROM productos WHERE nombre = '{$productData->nombre}' AND eliminado = 0";
-            $result = $this->query($sql);
-
-            if (is_object($result) && $result->num_rows == 0) {
-                $this->conexion->set_charset("utf8");
-
-                $sql = "INSERT INTO productos VALUES (null, '{$productData->nombre}', '{$productData->marca}', '{$productData->modelo}', {$productData->precio}, '{$productData->detalles}', {$productData->unidades}, '{$productData->imagen}', 0)";
-                
-                if ($this->query($sql)) {
-                    $data['status'] = "success";
-                    $data['message'] = "Producto agregado";
-                } else {
-                    $data['message'] = "ERROR: No se ejecutó $sql. " . mysqli_error($this->conexion);
-                }
-            }
-
-            if (is_object($result)) {
-                $result->free();
-            }
-        }
-
-        // Almacena el resultado de la operación en response
-        $this->response = $data;
-    }
-
-    public function delete($id) {
-        // Inicializa el arreglo de respuesta
-        $data = array(
-            'status'  => 'error',
-            'message' => 'La consulta falló'
-        );
-    
-        // Realiza la consulta de eliminación lógica
-        $sql = "UPDATE productos SET eliminado=1 WHERE id = {$id}";
-    
-        if ($this->query($sql)) {
-            $data['status'] = "success";
-            $data['message'] = "Producto eliminado";
-        } else {
-            $data['message'] = "ERROR: No se ejecutó $sql. " . mysqli_error($this->conexion);
-        }
-    
-        // Almacena el resultado en response para luego poder usar getData()
-        $this->response = $data;
-    }
-    
-    public function edit($product) {
-        // Inicializa el arreglo de respuesta
-        $data = array(
-            'status'  => 'error',
-            'message' => 'La consulta falló'
-        );
-    
-        // Convierte el objeto a JSON y luego a un arreglo asociativo
-        $productData = json_decode(json_encode($product), false);
-    
-        // Verifica que se haya proporcionado el ID
-        if (isset($productData->id)) {
-            // Construye la consulta de actualización
-            $sql = "UPDATE productos SET 
-                        nombre = '{$productData->nombre}', 
-                        marca = '{$productData->marca}', 
-                        modelo = '{$productData->modelo}', 
-                        precio = {$productData->precio}, 
-                        detalles = '{$productData->detalles}', 
-                        unidades = {$productData->unidades}, 
-                        imagen = '{$productData->imagen}' 
-                    WHERE id = {$productData->id} AND eliminado = 0";
-    
-            // Ejecuta la consulta y actualiza el estado según el resultado
-            if ($this->query($sql)) {
-                $data['status'] = "success";
-                $data['message'] = "Producto actualizado";
-            } else {
-                $data['message'] = "ERROR: No se ejecutó $sql. " . mysqli_error($this->conexion);
-            }
-        } else {
-            $data['message'] = "ID del producto no proporcionado";
-        }
-    
-        // Almacena el resultado en response para luego poder usar getData()
         $this->response = $data;
     }
 
@@ -214,8 +119,6 @@ class Products extends DataBase {
         // Almacena el resultado en response para luego poder usar getData()
         $this->response = $data;
     }
-    
-   
 
 }
 ?>

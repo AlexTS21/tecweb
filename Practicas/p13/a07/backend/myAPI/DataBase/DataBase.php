@@ -3,6 +3,7 @@ namespace Backend;
 abstract class DataBase {
     // Objeto de conexión protegido, accesible por las subclases
     protected $conexion;
+    protected $response;
 
     // Constructor de la clase
     public function __construct($user, $password, $dbName) {
@@ -22,6 +23,11 @@ abstract class DataBase {
         if ($this->conexion) {
             mysqli_close($this->conexion);
         }
+    }
+
+    public function getData() {
+        // Convierte el array de response a un string JSON y lo retorna
+        return json_encode($this->response, JSON_PRETTY_PRINT);
     }
 }
 ?>
