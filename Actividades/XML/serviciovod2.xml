@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE CatalogoVOD [
+    <!ELEMENT CatalogoVOD (cuenta, contenido)>
+    <!ELEMENT cuenta (correo, perfiles)>
+    <!ELEMENT correo (#PCDATA)>
+    <!ELEMENT perfiles (perfil+)>
+    <!ELEMENT perfil EMPTY>
+    <!ATTLIST perfil usuario CDATA #REQUIRED>
+    <!ATTLIST perfil idioma CDATA #REQUIRED>
+    <!ELEMENT contenido (peliculas, programas)>
+    <!ELEMENT peliculas (genero+)>
+    <!ELEMENT programas (genero+)>
+    <!ELEMENT genero (titulo+)>
+    <!ATTLIST genero nombre CDATA #REQUIRED>
+    <!ELEMENT titulo EMPTY>
+    <!ATTLIST titulo nombre CDATA #REQUIRED>
+    <!ATTLIST titulo duracion CDATA #REQUIRED>
+    
+]>
+<CatalogoVOD>
+    <cuenta>
+        <correo>alejanafs28@gmail.com</correo>
+        <perfiles>
+            <perfil usuario="Ale_T" idioma="Ingles"/>
+            <perfil usuario="Larry" idioma="Español"/>
+        </perfiles>
+    </cuenta>
+    <contenido>
+        
+        <peliculas>
+            <genero nombre="Ciencia Ficcion">
+                <titulo nombre="Inception" duracion="148"></titulo>
+                <titulo nombre="Tenet" duracion="150"></titulo>
+                <titulo nombre="Blade Runner 2049" duracion="152"></titulo>
+                <titulo nombre="The creator" duracion="138"></titulo>
+            </genero>
+            <genero nombre="Suspenso">
+                <titulo nombre="Split" duracion="117"></titulo>
+                <titulo nombre="Prisioners" duracion="153"></titulo>
+                <titulo nombre="Memento" duracion="113"></titulo>
+                <titulo nombre="Donnie Darko" duracion="113"></titulo>
+            </genero>
+        </peliculas>
+        <programas>
+            <genero nombre="Accion">
+                <titulo nombre="The mentalist" duracion="68"></titulo>
+                <titulo nombre="The last of us" duracion="53"></titulo>
+                <titulo nombre="The X files" duracion="54"></titulo>
+                <titulo nombre="Grimm" duracion="51"></titulo>
+            </genero>
+            <genero nombre="Superheroes">
+                <titulo nombre="The boys" duracion="68"></titulo>
+                <titulo nombre="The flash" duracion="53"></titulo>
+                <titulo nombre="Loki" duracion="54"></titulo>
+                <titulo nombre="X men 97" duracion="32"></titulo>
+            </genero>
+        </programas>
+    </contenido>
+</CatalogoVOD>

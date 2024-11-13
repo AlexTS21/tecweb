@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE CatalogoVOD [
+    <!ELEMENT CatalogoVOD (cuenta, contenido)>
+    <!ELEMENT cuenta (correo, perfiles)>
+    <!ELEMENT correo (#PCDATA)>
+    <!ELEMENT perfiles (perfil+)>
+    <!ELEMENT perfil (usuario, idioma)>
+    <!ELEMENT usuario (#PCDATA)>
+    <!ELEMENT idioma (#PCDATA)>
+    <!ELEMENT contenido (peliculas, programas)>
+    <!ELEMENT peliculas (genero+)>
+    <!ELEMENT programas (genero+)>
+    <!ELEMENT genero (nombre, titulo+)>
+    <!ELEMENT nombre (#PCDATA)>
+    <!ELEMENT titulo (nombre, duracion)>
+    <!ELEMENT duracion (#PCDATA)>
+]>
+<CatalogoVOD>
+    <cuenta>
+        <correo>alejanafs28@gmail.com</correo>
+        <perfiles>
+            <perfil>
+                <usuario>Ale_T</usuario>
+                <idioma>Ingles</idioma>
+            </perfil>
+            <perfil>
+                <usuario>Larry</usuario>
+                <idioma>Español</idioma>
+            </perfil>
+        </perfiles>
+    </cuenta>
+    <contenido>
+        <peliculas>
+            <genero>
+                <nombre>Ciencia Ficcion</nombre>
+                <titulo>
+                    <nombre>Inception</nombre>
+                    <duracion>148</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Tenet</nombre>
+                    <duracion>150</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>blade runner 2049</nombre>
+                    <duracion>152</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>The creator</nombre>
+                    <duracion>138</duracion>
+                </titulo>
+            </genero>
+            <genero>
+                <nombre>Suspenso</nombre>
+                <titulo>
+                    <nombre>Split</nombre>
+                    <duracion>117</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Prisioners</nombre>
+                    <duracion>153</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Memento</nombre>
+                    <duracion>113</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Donnie Darko</nombre>
+                    <duracion>113</duracion>
+                </titulo>
+            </genero>
+        </peliculas>
+        <programas>
+            <genero>
+                <nombre>Accion</nombre>
+                <titulo>
+                    <nombre>The mentalist</nombre>
+                    <duracion>68</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>The last of us</nombre>
+                    <duracion>53</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>The X files</nombre>
+                    <duracion>54</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Grimm</nombre>
+                    <duracion>51</duracion>
+                </titulo>
+            </genero>
+            <genero>
+                <nombre>Superheroes</nombre>
+                <titulo>
+                    <nombre>The boys</nombre>
+                    <duracion>68</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>The flash</nombre>
+                    <duracion>52</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Loki</nombre>
+                    <duracion>58</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>X-men 97</nombre>
+                    <duracion>32</duracion>
+                </titulo>
+            </genero>
+        </programas>
+    </contenido>
+</CatalogoVOD>
