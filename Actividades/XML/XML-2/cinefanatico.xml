@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cinefanatico SYSTEM "cinefanatico.dtd">
+<cinefanatico>
+    <tarjeta noserie="001" visitas="15" puntos="1200">
+        <nombre>Alejandro Tejeda</nombre>
+        <correo>alejanafs28@gmail.com</correo>
+        <telefono tipo="movil">2213599086</telefono>
+    </tarjeta>
+    <tarjeta noserie="002" visitas="10" puntos="850">
+        <nombre>Robert Patinson</nombre>
+        <correo>rp@gmail.com</correo>
+        <telefono tipo="casa">432342223</telefono>
+        
+        <telefono tipo="movil">2398432343</telefono>
+    </tarjeta>
+</cinefanatico>
